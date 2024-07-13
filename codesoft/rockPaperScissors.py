@@ -93,7 +93,7 @@ while True:
                                         (255, 0, 0), 1)
 
     cv2.imshow("live ", frame)
-    #  check if 'q' is pressed to exit the game 
+    #  check if 'q' is pressed to exit the game
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
