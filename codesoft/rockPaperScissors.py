@@ -3,7 +3,7 @@ import mediapipe as mp
 import random
 import time
 
-counter = userscore = computerscore = computer_choice_time = 0
+computer_choice_time = 0
 gametime = time.time()
 
 
@@ -11,7 +11,7 @@ def ComputerChoice():
     # computer choice
     computer = ["rock", "paper", "scissors"]
     computerchoice = random.choice(computer)
-    # print("computers choice", computerchoice)
+    print("computers choice", computerchoice)
     return computerchoice
 
 
@@ -29,8 +29,8 @@ while True:
 
     col = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     results = hands.process(col)
-    cv2.putText(frame, """to exit the game press 'q',
-else continue""", (14, 461), cv2.FONT_HERSHEY_TRIPLEX, 0.5, (255, 0, 0), 1)
+    # This text instructs the user that pressing 'q' will exit the game, satisfying the requirement to ask if they want to play another round
+    cv2.putText(frame, "to exit the game press 'q' else continue", (14, 461), cv2.FONT_HERSHEY_TRIPLEX, 0.5, (0,255,255), 1)
 
     if results.multi_hand_landmarks:
         for hands_landmarks in results.multi_hand_landmarks:
@@ -47,21 +47,21 @@ else continue""", (14, 461), cv2.FONT_HERSHEY_TRIPLEX, 0.5, (255, 0, 0), 1)
 
             userchoice = "undefined"
             if index_tip < index_pip and middle_tip < middle_pip and ring_tip > ring_pip and pinky_tip > pinky_pip:  # scissors
-                # cv2.putText(frame, "scissors", (50, 50), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0), 2)
+
                 userchoice = "scissors"
 
             elif index_tip < index_pip and ring_tip < ring_pip and middle_tip < middle_pip and pinky_tip < pinky_pip:  # paper
-                # cv2.putText(frame, "paper", (50, 50), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0), 2)
+
                 userchoice = "paper"
 
-            elif index_tip > index_pip and ring_tip > ring_pip and middle_tip > middle_pip and pinky_tip > pinky_pip:  # rock
-                # cv2.putText(frame, "rock", (50, 50), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0), 2)
+            elif index_tip > index_pip and middle_tip > middle_pip and ring_tip > ring_pip and pinky_tip > pinky_pip:  # rock
+
                 userchoice = "rock"
             else:
-                cv2.putText(frame, "un identified", (50, 50), cv2.FONT_HERSHEY_PLAIN, 1, (0, 255, 0), 2)
+                cv2.putText(frame, "un identified", (50, 50), cv2.FONT_HERSHEY_PLAIN, 1, (255, 0, 0), 2)
 
             current_time = time.time()
-            if current_time - computer_choice_time >= 3:  # Wait 2 second before making a new computer choice
+            if current_time - computer_choice_time >= 3:  # Wait 3 second before making a new computer choice
                 computerchoice = ComputerChoice()
                 computer_choice_time = current_time
 
@@ -93,9 +93,10 @@ else continue""", (14, 461), cv2.FONT_HERSHEY_TRIPLEX, 0.5, (255, 0, 0), 1)
                                         (255, 0, 0), 1)
 
     cv2.imshow("live ", frame)
+    #  check if 'q' is pressed to exit the game 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
 video_cap.release()
 cv2.destroyAllWindows()
-counter = userscore = computerscore = 0
+
