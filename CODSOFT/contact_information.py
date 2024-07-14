@@ -1,18 +1,21 @@
 phone_dict={}
 
 while True:
-    userinput=int(input("""1. Add new contact
+    userinput=int(input("""\t1. Add new contact
     2. View contact
     3. Search contact
     4. Update contact
-    5. Delete contact\n"""))
-
-    if userinput == 1:
+    5. Delete contact
+    6. Exit\n"""))
+    if userinput == 6:
+        print("Exiting")
+        break
+    elif userinput == 1:
         name=input("Enter name:")
         limit=int(input("How many phone numbers do you want to save?"))
         phone_number=[]
         while limit>0:
-            number=input("enter phone number ")
+            number=input("enter phone number ") # Ensure contact number is in digits and exactly 10 digits long
             if number.isdigit() and len(number) == 10:
                 phone_number.append(number)
             else:
