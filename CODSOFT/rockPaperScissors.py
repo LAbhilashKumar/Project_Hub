@@ -1,3 +1,11 @@
+"""The task was to create a rock-paper-scissors game where users could choose rock, paper, or scissors, and the computer would make a random choice. 
+The game would then determine the winner and display the result, with optional features for score tracking and replay prompts.
+In this implementation, I used OpenCV and Mediapipe to incorporate hand gesture recognition instead of traditional button inputs. 
+The application captures real-time video and processes hand gestures to identify the user’s choice. This approach offers a unique and interactive 
+gameplay experience, as it allows users to play the game using natural hand movements. I chose this method to challenge my skills and learn more about 
+real-time computer vision and gesture recognition technologies"""
+
+
 import cv2
 import mediapipe as mp
 import random
