@@ -30,5 +30,3 @@ A collection of various Python projects, including applications developed during
 - 🐍 **Snake Game** – A classic Snake game made with Tkinter.  
 - ❌⭕ **Tic Tac Toe** – A two-player Tic Tac Toe game with an AI opponent.  
 - 📂 **Other Files** – Additional scripts and utilities for various tasks.  
-
-- 
